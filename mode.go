@@ -25,7 +25,7 @@ type Mode struct {
 // NewBasicMode create basic Mode with debug, release, test
 // Example:
 //
-//	mode := mode.NewBaseMode()
+//	mode, err := mode.NewBaseMode()
 func NewBasicMode() (*Mode, error) {
 	return NewMode(nil)
 }
@@ -34,7 +34,7 @@ func NewBasicMode() (*Mode, error) {
 // Example:
 //
 //	 modes := []string{"staging"}
-//		mode := mode.NewMode(modes)
+//	 mode, err := mode.NewMode(modes)
 func NewMode(additionalModes []string) (*Mode, error) {
 	mode := os.Getenv(EnvMode)
 	modes := []string{
