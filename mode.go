@@ -2,6 +2,7 @@ package mode
 
 import (
 	"errors"
+	"fmt"
 	"os"
 )
 
@@ -44,7 +45,7 @@ func NewMode(additionalModes []string) *Mode {
 	modes = append(modes, additionalModes...)
 
 	if !modeExists(modes, mode) {
-		panic("mode from env doest not exists in available modes")
+		panic(fmt.Sprintf("mode from env doest not exists in available modes, use \"%s\"", mode))
 	}
 
 	return &Mode{
