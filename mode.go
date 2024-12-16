@@ -26,7 +26,7 @@ type Mode struct {
 // Example:
 //
 //	mode := mode.NewBaseMode()
-func NewBasicMode() *Mode {
+func NewBasicMode() (*Mode, error) {
 	return NewMode(nil)
 }
 
@@ -35,7 +35,7 @@ func NewBasicMode() *Mode {
 //
 //	 modes := []string{"staging"}
 //		mode := mode.NewMode(modes)
-func NewMode(additionalModes []string) *Mode {
+func NewMode(additionalModes []string) (*Mode, error) {
 	mode := os.Getenv(EnvMode)
 	modes := []string{
 		DebugMode,
@@ -45,13 +45,16 @@ func NewMode(additionalModes []string) *Mode {
 	modes = append(modes, additionalModes...)
 
 	if !modeExists(modes, mode) {
-		panic(fmt.Sprintf("mode from env doest not exists in available modes, use \"%s\"", mode))
+		return &Mode{
+			mode:  DebugMode,
+			modes: modes,
+		}, errors.New(fmt.Sprintf("mode from env doest not exists in available modes, used \"%s\", \"%s\" will be used.", mode, DebugMode))
 	}
 
 	return &Mode{
 		mode:  mode,
 		modes: modes,
-	}
+	}, nil
 }
 
 // AddMode add next available mode
