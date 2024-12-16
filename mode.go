@@ -48,7 +48,7 @@ func NewMode(additionalModes []string) (*Mode, error) {
 		return &Mode{
 			mode:  DebugMode,
 			modes: modes,
-		}, errors.New(fmt.Sprintf("mode from env doest not exists in available modes, used \"%s\", \"%s\" will be used.", mode, DebugMode))
+		}, errors.New(fmt.Sprintf("mode from env doest not exists in available modes, used \"%s\", \"%s\" will be use.", mode, DebugMode))
 	}
 
 	return &Mode{
@@ -115,6 +115,11 @@ func (m *Mode) EnableRelease() (bool, error) {
 // GetMode return current set mode
 func (m *Mode) GetMode() string {
 	return m.mode
+}
+
+// Modes return available modes
+func (m Mode) Modes() []string {
+	return m.modes
 }
 
 // modeExists internal function for check if mode is inside available modes
