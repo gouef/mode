@@ -60,6 +60,39 @@ func TestMode_EnableMode(t *testing.T) {
 	assert.Equal(t, mode.TestMode, m.GetMode())
 }
 
+func TestMode_EnableDebug(t *testing.T) {
+	os.Unsetenv(mode.EnvMode)
+	m, _ := mode.NewBasicMode()
+
+	success, err := m.EnableDebug()
+
+	require.NoError(t, err)
+	assert.True(t, success)
+	assert.Equal(t, mode.DebugMode, m.GetMode())
+}
+
+func TestMode_EnableTest(t *testing.T) {
+	os.Unsetenv(mode.EnvMode)
+	m, _ := mode.NewBasicMode()
+
+	success, err := m.EnableTest()
+
+	require.NoError(t, err)
+	assert.True(t, success)
+	assert.Equal(t, mode.TestMode, m.GetMode())
+}
+
+func TestMode_EnableRelease(t *testing.T) {
+	os.Unsetenv(mode.EnvMode)
+	m, _ := mode.NewBasicMode()
+
+	success, err := m.EnableRelease()
+
+	require.NoError(t, err)
+	assert.True(t, success)
+	assert.Equal(t, mode.ReleaseMode, m.GetMode())
+}
+
 func TestMode_EnableMode_Invalid(t *testing.T) {
 	os.Unsetenv(mode.EnvMode)
 	m, _ := mode.NewBasicMode()
