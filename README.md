@@ -6,6 +6,7 @@ Mode of project
 [![GoDoc](https://pkg.go.dev/badge/github.com/gouef/mode.svg)](https://pkg.go.dev/github.com/gouef/mode)
 [![GitHub stars](https://img.shields.io/github/stars/gouef/mode?style=social)](https://github.com/gouef/mode/stargazers)
 [![Go Report Card](https://goreportcard.com/badge/github.com/gouef/mode)](https://goreportcard.com/report/github.com/gouef/mode)
+[![codecov](https://codecov.io/github/gouef/mode/branch/main/graph/badge.svg?token=YUG8EMH6Q8)](https://codecov.io/github/gouef/mode)
 
 
 ## Vesions

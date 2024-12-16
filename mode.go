@@ -33,8 +33,8 @@ func NewBasicMode() (*Mode, error) {
 // NewMode create Mode
 // Example:
 //
-//	 modes := []string{"staging"}
-//	 mode, err := mode.NewMode(modes)
+//	modes := []string{"staging"}
+//	mode, err := mode.NewMode(modes)
 func NewMode(additionalModes []string) (*Mode, error) {
 	mode := os.Getenv(EnvMode)
 	modes := []string{
